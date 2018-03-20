@@ -1,0 +1,227 @@
+<html>
+
+	<head>
+
+		<title>Home Web page</title>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script type="text/javascript">
+    function validateName() {
+
+  var name = document.getElementById('contact-name').value;
+
+  if(name.length == 0) {
+
+    producePrompt('Name is required', 'name-error' , 'red')
+    return false;
+
+  }
+   if(name.match(/^[0-9]*$/)) {
+      producePrompt('Only charachters please.' ,'name-error', 'red');
+      return false;
+    }
+
+ producePrompt('Valid', 'name-error', 'green');
+  return true;
+
+}
+
+function validatePhone() {
+
+  var phone = document.getElementById('contact-phone').value;
+
+    if(phone.length == 0) {
+      producePrompt('Phone number is required.', 'phone-error', 'red');
+      return false;
+    }
+
+    if(phone.length <= 10) {
+      producePrompt('Length less than 10.No alphabets', 'phone-error', 'red');
+      return false;
+    }
+
+     if(phone.length >= 10) {
+      producePrompt('Length more than 10.', 'phone-error', 'red');
+      return false;
+    }
+
+    if(!phone.match(/^[0-9]{10}$/)) {
+      producePrompt('Only digits, please.' ,'phone-error', 'red');
+      return false;
+    }
+  
+    producePrompt('Valid', 'phone-error', 'green');
+    return true;
+
+}
+
+function validateEmail () {
+
+  var email = document.getElementById('contact-email').value;
+
+  if(email.length == 0) {
+
+    producePrompt('Email is required','email-error', 'red');
+    return false;
+
+  }
+
+  if(!email.match(/^[A-Za-z\._\-[0-9]*[@][A-Za-z]*[\.][gG]{2,4}$/)) {
+
+    producePrompt('Email Invalid', 'email-error', 'red');
+    return false;
+
+  }
+
+  producePrompt('Valid', 'email-error', 'green');
+  return true;
+
+}
+
+function validateMessage() {
+  var message = document.getElementById('contact-message').value;
+  var required = 30;
+  var left = required - message.length;
+
+  if (left > 0) {
+    producePrompt(left + ' more characters required','message-error','red');
+    return false;
+  }
+
+  producePrompt('Valid', 'message-error', 'green');
+  return true;
+
+}
+
+function producePrompt(message, promptLocation, color) {
+
+  document.getElementById(promptLocation).innerHTML = message;
+  document.getElementById(promptLocation).style.color = color;
+
+
+}
+
+    </script>
+		
+		<style>
+
+		.put
+		{
+		background-image:url("title_RentalsRings.png");  padding-top: 135px;padding-right: 30px; padding-bottom: 40px; padding-left: 60px; background-repeat: no-repeat;
+		}
+
+
+    .alter
+    {
+        background-image:url("dfs_olympics.jpg");background-repeat: no-repeat; 
+    } 
+
+		p
+		{
+			font-family:Abel-Regular; font-size:20px; color:white;
+		}
+
+		article
+		{
+			font-family:Abel-Regular; font-size:16px; color:black;
+		}
+		a
+		{
+			color:white;
+			text-decoration:none;
+		}
+
+		</style>
+
+	</head>
+
+<body class="alter">
+<div class="put">
+  <center>
+    
+  </center>
+  </div>
+
+
+
+
+		<nav class="navbar navbar-inverse"  style="background-color:#49484b;">
+  				<div class="container-fluid">
+    			<div class="navbar-header">
+    	</div>
+    		<ul class="nav navbar-nav" style="font-family:Abel-Regular;">
+     	 <li><a href="C:\Users\Rohan\Desktop\Wireshark Files\Project/home.html" target="_self">Home</a></li>
+      	<li><a href="C:\Users\Rohan\Desktop\Wireshark Files\Project/es.html" target="_blank">Essentials</a></li>
+      	<li class="active"><a href="#">Contact</a></li>
+      	<li><a href="C:\Users\Rohan\Desktop\Wireshark Files\Project/links.html" target="_blank">Links</a></li>
+          <li><a href="C:\Users\Rohan\Desktop\Wireshark Files\Project/maps.html" target="_blank">Locate Us</a></li>
+      	 <form class="navbar-form navbar-left">
+      <div class="form-group">
+        <input type="text" class="form-control" placeholder="Search">
+      </div>
+      <button type="submit" class="btn btn-default btn-success">Submit</button>
+    </form>
+    	</ul>
+    
+  			</div>
+			</nav>
+
+          
+
+
+		<form method="post">
+
+          <div class="form-group">
+          <label for="contact-name">Name</label>
+            <input type="text" class="form-control" id="contact-name" name="name" placeholder="Enter First and Last name" onkeyup='validateName()' style="width:50%;">
+            <span class='error-message' id='name-error'></span>
+          </div>
+          
+
+          <div class="form-group">
+            <label for="contact-phone">Phone Number</label>
+            <input type="tel" class="form-control" id="contact-phone" name="phone" placeholder="10 digits" onkeyup='validatePhone()' style="width:50%;">
+            <span class='error-message' id='phone-error'></span>
+          </div>
+
+          <div class="form-group">
+            <label for="contact-email">Email address</label>
+            <input type="email" class="form-control" id="contact-email" name="email" placeholder="Enter Email" onkeyup='validateEmail()' style="width:50%;">
+            <span class='error-message' id='email-error'></span>
+          </div>   
+
+          <div class="form-group">
+            <label for='contactMessage'>Your Message</label>
+            <textarea class="form-control" rows="5" id='contact-message'  name='message'  placeholder="Enter a brief message" onkeyup='validateMessage()' style="width:50%;"></textarea>
+            <span class='error-message' id='message-error'></span>
+          </div>
+
+        <button onclick='validateForm()' class="btn btn-default btn-success">Submit</button>
+        <button class="btn btn-danger">Reset </button>
+        <span class='error-message' id='submit-error'></span>
+      </form>
+ 		</br></br></br>
+   
+
+		<div>
+		<footer>
+			 E-mail us at msrit.edu 
+
+		</footer>
+
+		</div>
+					<div class="container">
+		 <ul class="pagination">
+ 				 <li ><a href="C:\Users\Rohan\Desktop\Wireshark Files\Project/home.html" target="_self">1</a></li>
+  				<li ><a href="C:\Users\Rohan\Desktop\Wireshark Files\Project/es.html" target="_blank">2</a></li>
+  				<li class="active" ><a href="#">3</a></li>
+  				<li ><a href="C:\Users\Rohan\Desktop\Wireshark Files\Project/links.html" target="_blank">4</a></li>
+  				<li><a href="C:\Users\Rohan\Desktop\Wireshark Files\Project/maps.html" target="_blank">5</a></li>
+		</ul> 
+		</div>
+
+
+</body>
+</html>
+
+
+

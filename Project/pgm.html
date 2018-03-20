@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title> program </title>
+	<script type="text/javascript"> 
+	function welcome()
+{
+var divID=document.getElementById("targetDiv");
+var name=document.getElementById("name");
+divID.innerHTML=name.value;
+var output=document.getElementById("pname");
+output.value=name.value;
+}
+	</script>
+</head>
+<body>
+<div class="container">
+<input type="text" id="name"/><br>
+<input type="button" id="btn" value="print name" onclick="welcome()"/><br>
+<div id="targetDiv">
+</div>
+output value<input type="text" id="pname"/>
+</div>
+</body>
+</html>
